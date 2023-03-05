@@ -1,7 +1,8 @@
-let gameEl = $('game');
+let gameEl = document.querySelector('.game');
+let buttonEl = document.querySelector('button');
 
 
-let secondsLeft = 90;
+let secondsLeft = 60;
 
 function setTime {
     let timerInterval = setInterval(function () {
