@@ -20,16 +20,18 @@
     <title>Coding Question Game</title>
   </head>
   <body>
-    <section>
+    <div id="timer"></div>
+    <div id="changeArea">
       <p class="openLine">Do you dare challenge the Coding Question Game?</p>
       <p>
         Up to an available 10 questions in 60 seconds. <br />
         10 points per correct answer. <br />
         0 points per wrong answer AND loss of 5 seconds on the countdown timer.
       </p>
-      <button type="button">Start the Challenge!</button>
-      <div class="game"></div>
-    </section>
+      <button>Start the Challenge!</button>
+    </div>
+    <div class="score"></div>
+    <button id="hideButton" class="hide">Play Again!</button>
 
     <script src="./assets/js/script.js"></script>
   </body>

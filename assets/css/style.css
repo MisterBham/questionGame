@@ -1,8 +1,10 @@
-body {
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-section {
+body {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -13,15 +15,34 @@ section {
 }
 
 button {
-    height: 3%;
-    width: 15%;
+    padding: 1%;
+    margin: 1%;
 }
 
 .openLine {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+    font-weight: bold;
+    font-size: 150%;
+    margin: 1%;
 }
 
-p {
+.hide {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+}
+
+#changeArea {
         font-family: 'Open Sans', sans-serif;
+        width: 100%;
+}
+
+#timer {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 150%;
+    margin: 1%;
+    margin-bottom: 5%;
 }
