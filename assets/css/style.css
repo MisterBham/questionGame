@@ -1,27 +1,57 @@
-body {
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-section {
+body {
     height: 100vh;
     width: 100vw;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-button {
-    height: 3%;
-    width: 15%;
-}
-
-.openLine {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
 }
 
 p {
-        font-family: 'Open Sans', sans-serif;
+    margin: 2%;
+}
+
+input {
+    margin: 1%;
+    width: 10%;
+}
+
+.btn {
+    min-width: 50%;
+    min-height: 2%;
+    margin: 0.5%;
+    padding: 0.5%;
+}
+
+.opening-line {
+    font-size: 125%;
+    font-weight: bold;
+}
+
+
+
+.hide {
+    display: none;
+}
+
+#timer, #score {
+    font-size: 125%;
+    margin: 5% 0;
+}
+
+#question, #answers {
+    margin: 1%;
+}
+
+#start {
+    width: 10%;
+    padding: 0.25%;
+}
+
+#submitBtn {
+    padding: 0.25%;
 }
