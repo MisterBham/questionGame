@@ -82,6 +82,22 @@ ul {
     font-size: 175%;
 }
 
+#leaderboard h3 {
+    margin: 2% 0;
+}
+
+#clearscores {
+    margin: 1%;
+}
+
+#leaderboard ul, #leaderboard button {
+    display: none;
+}
+
+#leaderboard:hover ul, #leaderboard:hover button {
+    display: inline-block;
+}
+
 @media only screen and (max-width: 1200px) {
     * {
         font-size: 95%;

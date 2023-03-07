@@ -12,13 +12,29 @@ var a3El = document.getElementById("a3");
 var initialsCont = document.getElementById("initials-container");
 var initialsInput = document.getElementById("initials-input");
 var submitBtn = document.getElementById("submitBtn");
+var leaderboardEl = document.getElementById("leaderboard");
+var lb1El = document.getElementById("lb1");
+// var lb2El = document.getElementById("lb2");
+// var lb3El = document.getElementById("lb3");
+var clearscoresBtn = document.getElementById("clearscores");
 
 var timer;
 var timerCount;
 var currentIndex = 0;
 var points = 0;
-var highScore = localStorage.getItem("highScore");
-var initials = localStorage.getItem("initials");
+var highScore = localStorage.getItem("highScore") || "0";
+var leader = localStorage.getItem("leader") || "No leader value stored yet";
+// var second = localStorage.getItem("2nd") || "0";
+// var secondIni =
+//   localStorage.getItem("2ndini") || "No 2nd place value stored yet";
+// var third = localStorage.getItem("3rd") || "0";
+// var thirdIni =
+//   localStorage.getItem("3rdini") || "No 3rd place value stored yet";
+
+lb1El.textContent = "Current Leader: " + leader + " , Score: " + highScore;
+
+// lb2El.textContent = "2nd place: " + secondIni + " , Score: " + second;
+// lb3El.textContent = "3rd place: " + thirdIni + " , Score: " + third;
 
 var questionPool = [
   {
@@ -102,13 +118,14 @@ var questionPool = [
 function startGame() {
   textEl.innerHTML = "";
   textEl.textContent = "";
-  initialsInput.textContent = "";
+  initialsInput.value = "";
   questionEl.classList.remove("hide");
   answersEl.classList.remove("hide");
   startbuttonEl.classList.add("hide");
   timerEl.classList.remove("hide");
   scoreEl.classList.remove("hide");
   initialsCont.classList.add("hide");
+  leaderboardEl.classList.add("hide");
   timerCount = 60;
   points = 0;
   currentIndex = 0;
@@ -142,7 +159,7 @@ function startTimer() {
   timer = setInterval(function () {
     timerEl.textContent = "Timer: " + timerCount;
     timerCount--;
-    if (timerCount <= -1 || currentIndex >= 9) {
+    if (timerCount <= -1) {
       clearInterval(timer);
       endGame();
     }
@@ -177,16 +194,46 @@ function endGame() {
   startbuttonEl.textContent = "Play Again?";
   textEl.innerHTML = "Game Over! Enter your initials to record your score.";
   scoreEl.textContent = "Your final score is: " + points;
+  clearInterval(timer);
   storeScore();
 }
 
 function storeScore() {
   if (points > highScore) {
+    localStorage.setItem("leader", initialsInput.value);
     localStorage.setItem("highScore", points);
-    localStorage.setItem("initials", initialsInput.value);
-  } else {
-    return;
   }
+  // if (points > second) {
+  //   localStorage.setItem("2ndini", initialsInput.value);
+  //   localStorage.setItem("2nd", points);
+  // }
+  // if (points > third) {
+  //   localStorage.setItem("3rdini", initialsInput.value);
+  //   localStorage.setItem("3rd", points);
+  // }
+  // refreshScores();
+}
+
+function clearScores() {
+  localStorage.setItem("highScore", 0);
+  localStorage.setItem("leader", "");
+  // localStorage.setItem("2nd", 0);
+  // localStorage.setItem("2ndini", "");
+  // localStorage.setItem("3rd", 0);
+  // localStorage.setItem("3rdini", "");
+  location.reload();
+}
+
+function refreshScores() {
+  highScore = localStorage.getItem("highScore") || "0";
+  leader = localStorage.getItem("leader") || "No leader value stored yet";
+  // second = localStorage.getItem("2nd") || "0";
+  // secondIni = localStorage.getItem("2ndini") || "No 2nd place value stored yet";
+  // third = localStorage.getItem("3rd") || "0";
+  // thirdIni = localStorage.getItem("3rdini") || "No 3rd place value stored yet";
+  lb1El.textContent = "Current Leader: " + leader + " , Score: " + highScore;
+  // lb2El.textContent = "2nd place: " + secondIni + " , Score: " + second;
+  // lb3El.textContent = "3rd place: " + thirdIni + " , Score: " + third;
 }
 
 // Event Listeners
@@ -196,3 +243,4 @@ a1El.addEventListener("click", confirmAnswer);
 a2El.addEventListener("click", confirmAnswer);
 a3El.addEventListener("click", confirmAnswer);
 submitBtn.addEventListener("click", storeScore);
+clearscoresBtn.addEventListener("click", clearScores);
